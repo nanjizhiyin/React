@@ -22,6 +22,9 @@ export class NavApp extends Component {
   }
   render () {
     const { data, text,isFetching ,dispatch,httpAction} = this.props
+                        console.log("=======>isFetching:"+isFetching)
+                        console.log("=======>data:"+data)
+                        console.log("=======>text:"+text)
         //总数量
     var totalItems = null;
     //数据列表

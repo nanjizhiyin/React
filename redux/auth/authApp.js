@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { instanceOf } from 'prop-types';
-import {withCookies, Cookies} from 'react-cookies'
+import { withCookies, Cookies } from 'react-cookie'
 import {AUTH_START,AUTH_SELECT}  from '../rootAction'
 import NavAppConnect  from '../nav/navAppConnect'
 import HomeAppConnect from '../home/homeAppConnect'
 import TestAppConnect from '../test/testAppConnect'
-import * as RootAction from '../rootAction'
-import * as HttpAction from '../httpAction'
 import {
   BrowserRouter as Router,
   Route,
@@ -18,15 +16,15 @@ import {
 
 class AuthApp extends Component {
   
-  // static propTypes = {
-  //   cookies: instanceOf(Cookies).isRequired
-  // }
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  }
   constructor(props) {
     super(props);
   }
   componentDidMount() {
-    const { rootAction } = this.props
-    rootAction.rootStart(AUTH_START)
+    const { rootAction ,cookies} = this.props
+      rootAction.rootStart(AUTH_START)
   }
 
   componentWillReceiveProps() {
@@ -51,21 +49,10 @@ class AuthApp extends Component {
     )
   }
   render () {
-    const { authenticated,data, text,isFetching ,dispatch,httpAction} = this.props;
+    const {data, text,loginUrl,isFetching ,dispatch,httpAction,cookies} = this.props;
     var liList = null;
     if (isFetching){
-      //let xtoken = cookie.get("xtoken");
-      //console.log('=======>xtoken='+document.cookie);
         httpAction.itembankGET(AUTH_SELECT,"user/permission")
-      // //判断是否已经登录
-      // if (authenticated){
-      //   //已经认证
-      //   httpAction.itembankGET(AUTH_SELECT,"user/permission")
-      // }
-      // else{
-      //   //请登录
-      //   httpAction.itembankGET(AUTH_SELECT,"logintest")
-      // }
     }
     else if (data){
       liList = data.map((item, i) =>{
@@ -75,6 +62,9 @@ class AuthApp extends Component {
                       }
                       )
     }
+    else if (loginUrl){
+        self.location = loginUrl;
+    }              
     return (
       <div>
         {isFetching &&
@@ -102,23 +92,4 @@ class AuthApp extends Component {
   }
 }
 
-
-function mapStateToProps(state) {
-  const { authReducer } = state
-  var data = authReducer.data;
-  var text = authReducer.text;
-  var isFetching = authReducer.isFetching;
-
-  return {
-    data : data,
-    text : text,
-    isFetching : isFetching
-  }
-}
-function mapDispatchToProps(dispatch) {
-  return {
-    rootAction: bindActionCreators(RootAction, dispatch),
-    httpAction: bindActionCreators(HttpAction, dispatch)
-  }
-}
-export default connect(mapStateToProps,mapDispatchToProps)(AuthApp)
+export default withCookies(AuthApp)

@@ -2,9 +2,6 @@
 import { NAV_START, NAV_SELECT,NAV_ERROR}  from '../rootAction'
 
 export function navReducer(state = {}, action) {
-    //console.log("===== > navReducer收到:action.type:"+action.type);
-    // console.log("===== >收到数据6 action.text:"+action.text);
-    //console.log("===== >收到数据6 action.data:"+action.data);
   switch (action.type) {
     case NAV_START:
       var tmpState = Object.assign({}, state, {

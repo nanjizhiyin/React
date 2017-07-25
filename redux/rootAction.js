@@ -3,10 +3,10 @@ export const ERROR_START = 'ERROR_START'
 export const ERROR_SELECT = 'ERROR_SELECT'
 export const ERROR_ERROR   = 'ERROR_ERROR'
 
-
 export const AUTH_START = 'AUTH_START'
 export const AUTH_SELECT = 'AUTH_SELECT'
 export const AUTH_ERROR   = 'AUTH_ERROR'
+export const AUTH_LOGIN   = 'AUTH_LOGIN'
 
 export const NAV_START = 'NAV_START'
 export const NAV_SELECT = 'NAV_SELECT'
@@ -36,4 +36,8 @@ export function rootSelect(actionType,url,data) {
 export function rootError(actionType,url,text) {
   console.log("===== > 访问地址:"+url);
   return { type: actionType ,text:text}
+}
+export function rootLogin(url) {
+  console.log("===== > 访问地址:"+url);
+  return { type: AUTH_LOGIN,loginUrl:url}
 }

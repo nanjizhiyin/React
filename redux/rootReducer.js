@@ -4,10 +4,10 @@ import { homeReducer } from './home/homeReducer'
 import { testReducer } from './test/testReducer'
 import { authReducer } from './auth/authReducer'
 const rootReducers = combineReducers({
+  authReducer,
   navReducer,
   homeReducer,
-  testReducer,
-  authReducer
+  testReducer
 })
 
 export default rootReducers
