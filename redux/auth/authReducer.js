@@ -6,24 +6,28 @@ export function authReducer(state = {}, action) {
   var data = null;
   var text = null;
   var loginUrl = null;
+  
   switch (action.type) {
-    case AUTH_START:{
-        isFetching = true
-    }
-    case AUTH_SELECT:{
-        data = action.data
-    }
-    case AUTH_ERROR:{
-        text = action.text
-    }
-    case AUTH_LOGIN:{
-        loginUrl = action.loginUrl
-    }
+    case AUTH_START:
+      var tmpState = Object.assign({}, state, {
+        isFetching: true
+      })
+      return tmpState;
+    case AUTH_SELECT:
+      return Object.assign({}, state, {
+        isFetching: false,
+        data: action.data
+      })
+    case AUTH_ERROR:
+      return Object.assign({}, state, {
+        isFetching: false,
+        text: action.text
+      })
+    case AUTH_LOGIN:
+      return Object.assign({}, state, {
+        loginUrl : action.loginUrl
+      })
+    default:
+      return state
   }
-  return Object.assign({}, state, {
-      isFetching: isFetching,
-      text: text,
-      loginUrl: loginUrl,
-      data: data
-    })
 }

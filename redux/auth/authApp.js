@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
 import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie'
 import {AUTH_START,AUTH_SELECT}  from '../rootAction'
