@@ -47,7 +47,16 @@ class AuthApp extends Component {
     )
   }
   render () {
-    const {data, text,loginUrl,isFetching ,dispatch,httpAction,cookies} = this.props;
+      var letterStyle = {
+      padding: 10,
+      margin: 10,
+      backgroundColor: "#ffde00",
+      color: "#333",
+      display: "inline-block",
+      fontFamily: "monospace",
+      textAlign: "center"
+    };
+    const {data, text,loginUrl,isFetching ,dispatch,httpAction} = this.props;
     var liList = null;
     if (isFetching){
         httpAction.itembankGET(AUTH_SELECT,"user/permission")
@@ -61,10 +70,11 @@ class AuthApp extends Component {
                       )
     }
     else if (loginUrl){
+      console.log("=======>正在打开登录地址 = "+loginUrl)
         self.location = loginUrl;
     }              
     return (
-      <div>
+      <div style={letterStyle}>
         {isFetching &&
           <h2>Loading...</h2>
         }

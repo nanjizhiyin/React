@@ -2,10 +2,6 @@
 import {AUTH_LOGIN, AUTH_START, AUTH_SELECT,AUTH_ERROR}  from '../rootAction'
 
 export function authReducer(state = {}, action) {
-  var isFetching = false;
-  var data = null;
-  var text = null;
-  var loginUrl = null;
   
   switch (action.type) {
     case AUTH_START:
@@ -16,15 +12,22 @@ export function authReducer(state = {}, action) {
     case AUTH_SELECT:
       return Object.assign({}, state, {
         isFetching: false,
-        data: action.data
+        data: action.data,
+        text: null,
+        loginUrl:null
       })
     case AUTH_ERROR:
       return Object.assign({}, state, {
         isFetching: false,
-        text: action.text
+        data: null,
+        text: action.text,
+        loginUrl:null
       })
     case AUTH_LOGIN:
       return Object.assign({}, state, {
+        isFetching: false,
+        data: null,
+        text: null,
         loginUrl : action.loginUrl
       })
     default:
