@@ -1,4 +1,4 @@
-import AuthApp from './authApp'
+import AuthApp from './authApp.jsx'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as RootAction from '../rootAction'

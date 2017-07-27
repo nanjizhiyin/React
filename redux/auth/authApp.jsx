@@ -5,13 +5,13 @@ import {AUTH_START,AUTH_SELECT}  from '../rootAction'
 import NavAppConnect  from '../nav/navAppConnect'
 import HomeAppConnect from '../home/homeAppConnect'
 import TestAppConnect from '../test/testAppConnect'
+// import authCss from './auth.scss'
 
 import {
   BrowserRouter as Router,
   Route,
   Link
 } from 'react-router-dom'
-
 
 class AuthApp extends Component {
   

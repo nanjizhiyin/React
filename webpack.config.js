@@ -1,5 +1,5 @@
 module.exports = {
-  entry: __dirname +"/public/index.jsx",//唯一的入口文件
+  entry: __dirname + "/public/index.jsx",//唯一的入口文件
     output:{
       path: __dirname +"/disc",//打包后文件存放的目录
       filename:'bundle.js' //打包后输入的文件名
