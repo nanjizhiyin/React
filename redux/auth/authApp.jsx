@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { instanceOf } from 'prop-types';
+import React, { Component } from 'react'
+import { instanceOf } from 'prop-types'
 import { withCookies, Cookies } from 'react-cookie'
-import {AUTH_START,AUTH_SELECT}  from '../rootAction'
-import NavAppConnect  from '../nav/navAppConnect'
+import { AUTH_START, AUTH_SELECT } from '../rootAction'
+import NavAppConnect from '../nav/navAppConnect'
 import HomeAppConnect from '../home/homeAppConnect'
 import TestAppConnect from '../test/testAppConnect'
 // import authCss from './auth.scss'
@@ -14,7 +14,6 @@ import {
 } from 'react-router-dom'
 
 class AuthApp extends Component {
-  
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired
   }
@@ -22,8 +21,8 @@ class AuthApp extends Component {
     super(props);
   }
   componentDidMount() {
-    const { rootAction ,cookies} = this.props
-      rootAction.rootStart(AUTH_START)
+    const { rootAction, cookies } = this.props
+    rootAction.rootStart(AUTH_START)
   }
 
   componentWillReceiveProps() {
