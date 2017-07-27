@@ -5,6 +5,7 @@ import {AUTH_START,AUTH_SELECT}  from '../rootAction'
 import NavAppConnect  from '../nav/navAppConnect'
 import HomeAppConnect from '../home/homeAppConnect'
 import TestAppConnect from '../test/testAppConnect'
+
 import {
   BrowserRouter as Router,
   Route,
@@ -47,15 +48,6 @@ class AuthApp extends Component {
     )
   }
   render () {
-      var letterStyle = {
-      padding: 10,
-      margin: 10,
-      backgroundColor: "#ffde00",
-      color: "#333",
-      display: "inline-block",
-      fontFamily: "monospace",
-      textAlign: "center"
-    };
     const {data, text,loginUrl,isFetching ,dispatch,httpAction} = this.props;
     var liList = null;
     if (isFetching){
@@ -74,7 +66,7 @@ class AuthApp extends Component {
         self.location = loginUrl;
     }              
     return (
-      <div style={letterStyle}>
+      <div>
         {isFetching &&
           <h2>Loading...</h2>
         }
