@@ -5,6 +5,7 @@
     "standard-react"
   ],
   "plugins": [
+    	"react" 
   ],
   "env": {
     "browser": true,

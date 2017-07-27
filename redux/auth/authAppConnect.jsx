@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import * as RootAction from '../rootAction'
 import * as HttpAction from '../httpAction'
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   const { authReducer } = state
   return {
     data : authReducer.data,
@@ -13,10 +13,10 @@ function mapStateToProps(state) {
     loginUrl : authReducer.loginUrl
   }
 }
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
     rootAction: bindActionCreators(RootAction, dispatch),
     httpAction: bindActionCreators(HttpAction, dispatch)
   }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(AuthApp)
+export default connect(mapStateToProps, mapDispatchToProps)(AuthApp)

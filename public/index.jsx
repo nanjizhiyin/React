@@ -9,7 +9,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 
 const store = configureStore()
 class Root extends Component {
-  render() {
+  render () {
     return (
       <Provider store={store}>
         <div>
@@ -26,6 +26,6 @@ class Root extends Component {
 }
 
 ReactDOM.render(
-    <Root />,
-    document.getElementById('root')
+  <Root />,
+  document.getElementById('root')
 )
