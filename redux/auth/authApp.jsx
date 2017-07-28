@@ -79,7 +79,7 @@ class AuthApp extends Component {
       // 拼装要显示的html标签
       showBody = <Router>
         <div>
-          <div className="nav">
+          <div id="nav">
             {liList}
           </div>
           <div>-------------------------------</div>

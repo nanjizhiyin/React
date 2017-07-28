@@ -1,20 +1,18 @@
-import { createStore, applyMiddleware ,compose} from 'redux'
-var ReduxThunk = require('redux-thunk').default
+import { createStore, applyMiddleware, compose } from 'redux'
 import { createLogger } from 'redux-logger'
 import rootReducer from '../redux/rootReducer'
-import DevTools from './DevTools'
+var ReduxThunk = require('redux-thunk').default
 
 const logger = createLogger()
 
-// 这个地方完全可以不用compose，演示一下compose的使用
 const enhancer = compose(
-  DevTools.instrument()
-);
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 const createStoreWithMiddleware = applyMiddleware(
   ReduxThunk,
-  logger,
+  logger
 )(createStore)
 
-export default function configureStore(initialState) {
-  return createStoreWithMiddleware(rootReducer, initialState,enhancer)
+export default function configureStore (initialState) {
+  return createStoreWithMiddleware(rootReducer, initialState, enhancer)
 }
