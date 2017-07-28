@@ -1,5 +1,5 @@
 
-import { AUTH_LOGIN, AUTH_START, AUTH_SELECT, AUTH_ERROR } from '../rootAction'
+import { AUTH_LOGIN, AUTH_START, AUTH_SELECT, AUTH_ERROR } from '../rootAction.jsx'
 
 export function authReducer (state = {}, action) {
   switch (action.type) {

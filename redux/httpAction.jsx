@@ -1,4 +1,4 @@
-import { rootSelect, rootError, rootLogin } from './rootAction'
+import { rootSelect, rootError, rootLogin } from './rootAction.jsx'
 
 const headers = {
   'X-Requested-With' : 'XMLHttpRequest'

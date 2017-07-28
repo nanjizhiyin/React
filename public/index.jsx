@@ -4,9 +4,8 @@ import { Provider } from 'react-redux'
 import AuthAppConnect from '../redux/auth/authAppConnect.jsx'
 import { CookiesProvider } from 'react-cookie'
 import { BrowserRouter, Route } from 'react-router-dom'
+import configureStore from './configureStore.jsx'
 
-// import { store } from './configureStore'
-import configureStore from './configureStore'
 const store = configureStore()
 class Root extends Component {
   render () {

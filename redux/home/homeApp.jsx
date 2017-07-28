@@ -1,16 +1,21 @@
-import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { HOME_SELECT, HOME_START } from '../rootAction'
+import React, { Component } from 'react'
+import { object, string, bool } from 'prop-types'
+import { HOME_SELECT, HOME_START } from '../rootAction.jsx'
 import {
-  BrowserRouter as Router,
-  Route,
   Link
 } from 'react-router-dom'
 
 export class HomeApp extends Component {
-  constructor (props) {
-    super(props)
+  static propTypes = {
+    rootAction: object,
+    httpAction: object,
+    text: string,
+    data: object,
+    isFetching: bool
   }
+  // constructor (props) {
+  //   super(props)
+  // }
 
   componentDidMount () {
     const { rootAction } = this.props
@@ -21,7 +26,7 @@ export class HomeApp extends Component {
 
   }
   render () {
-    const { data, text, isFetching, dispatch, httpAction } = this.props
+    const { data, text, isFetching, httpAction } = this.props
     var liList = null
     if (isFetching) {
       httpAction.itembankGET(HOME_SELECT, 'user/role?group=mana')

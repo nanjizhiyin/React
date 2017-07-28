@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { createLogger } from 'redux-logger'
-import rootReducer from '../redux/rootReducer'
+import rootReducer from '../redux/rootReducer.jsx'
 var ReduxThunk = require('redux-thunk').default
 
 const logger = createLogger()

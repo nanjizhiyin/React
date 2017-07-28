@@ -1,19 +1,19 @@
 
-import { TEST_START,TEST_SELECT,TEST_ERROR}  from '../rootAction'
+import { HOME_START, HOME_SELECT, HOME_ERROR } from '../rootAction.jsx'
 
-export function testReducer(state = {}, action) {
+export function homeReducer (state = {}, action) {
   switch (action.type) {
-    case TEST_START:
+    case HOME_START:
       var tmpState = Object.assign({}, state, {
         isFetching: true
       })
-      return tmpState;
-    case TEST_SELECT:
+      return tmpState
+    case HOME_SELECT:
       return Object.assign({}, state, {
         isFetching: false,
         data: action.data
       })
-    case TEST_ERROR:
+    case HOME_ERROR:
       return Object.assign({}, state, {
         isFetching: false,
         text: action.text

@@ -1,7 +1,7 @@
 
-import { NAV_START, NAV_SELECT,NAV_ERROR}  from '../rootAction'
+import { NAV_START, NAV_SELECT, NAV_ERROR } from '../rootAction.jsx'
 
-export function navReducer(state = {}, action) {
+export function navReducer (state = {}, action) {
   switch (action.type) {
     case NAV_START:
       var tmpState = Object.assign({}, state, {
@@ -9,7 +9,7 @@ export function navReducer(state = {}, action) {
         data: null,
         text: null
       })
-      return tmpState;
+      return tmpState
     case NAV_SELECT:
       return Object.assign({}, state, {
         isFetching: false,

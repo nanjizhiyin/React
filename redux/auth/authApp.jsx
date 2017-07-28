@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { instanceOf, object, string, bool, array } from 'prop-types'
 import { withCookies, Cookies } from 'react-cookie'
-import { AUTH_START, AUTH_SELECT } from '../rootAction'
-import NavAppConnect from '../nav/navAppConnect'
-import HomeAppConnect from '../home/homeAppConnect'
-import TestAppConnect from '../test/testAppConnect'
+import { AUTH_START, AUTH_SELECT } from '../rootAction.jsx'
+import NavAppConnect from '../nav/navAppConnect.jsx'
+import HomeAppConnect from '../home/homeAppConnect.jsx'
+import TestAppConnect from '../test/testAppConnect.jsx'
 import './auth.scss'
 
 import {
