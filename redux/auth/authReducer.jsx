@@ -1,14 +1,13 @@
 
-import {AUTH_LOGIN, AUTH_START, AUTH_SELECT,AUTH_ERROR}  from '../rootAction'
+import { AUTH_LOGIN, AUTH_START, AUTH_SELECT, AUTH_ERROR } from '../rootAction'
 
-export function authReducer(state = {}, action) {
-  
+export function authReducer (state = {}, action) {
   switch (action.type) {
     case AUTH_START:
       var tmpState = Object.assign({}, state, {
         isFetching: true
       })
-      return tmpState;
+      return tmpState
     case AUTH_SELECT:
       return Object.assign({}, state, {
         isFetching: false,

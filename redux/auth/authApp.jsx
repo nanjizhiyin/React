@@ -53,7 +53,7 @@ class AuthApp extends Component {
   }
   render () {
     const { data, text, loginUrl, isFetching, httpAction } = this.props
-    //计算数据
+    // 计算数据
     let showBody = null
     if (isFetching) {
       showBody = <h2>Loading...</h2>
