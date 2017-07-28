@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { NAV_START, NAV_SELECT } from '../rootAction.jsx'
 import { object, string, bool } from 'prop-types'
-
 export class NavApp extends Component {
   static propTypes = {
     rootAction: object,
@@ -13,6 +12,7 @@ export class NavApp extends Component {
   constructor (props) {
     super(props)
     document.title = '教辅机构'
+    // this.loadScript() // 动态加载时,layer.load触发要设置延时
   }
   componentDidMount () {
     console.log('=======>NavApp 开始加载数据......')
@@ -22,6 +22,15 @@ export class NavApp extends Component {
   componentWillReceiveProps () {
 
   }
+  // loadScript () {
+  //   var script = document.createElement('script')
+  //   script.setAttribute('src', 'http://hwr.xuexindev.com/hdrRouter/js/jquery-3.2.1.min.js')
+  //   document.body.appendChild(script)
+
+  //   var script2 = document.createElement('script')
+  //   script2.setAttribute('src', 'http://hwr.xuexindev.com/hdrRouter/js/layer/layer.js')
+  //   document.body.appendChild(script2)
+  // }
   render () {
     const { data, text, isFetching, httpAction } = this.props
     // 总数量
@@ -34,7 +43,16 @@ export class NavApp extends Component {
     if (isFetching) {
       // 显示刷新并请求数据
       httpAction.dictionaryGET(NAV_SELECT, 'textbookunit')
-      html = <h2>Loading...</h2>
+
+      html = <div>
+        <h2>Loadssssss........</h2>
+        {
+          layer.msg('加载中.....', {
+            icon: 16,
+            shade: 0.01
+          })
+        }
+      </div>
     } else if (data) {
       // 显示加载的数据
       totalItems = data['totalItems']
