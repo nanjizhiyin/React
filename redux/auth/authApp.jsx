@@ -28,8 +28,13 @@ class AuthApp extends Component {
   // }
   componentDidMount () {
     const { rootAction, cookies } = this.props
-    cookies.set('ssss', 'bbbbb')
-    rootAction.rootStart(AUTH_START)
+    let data = cookies.get('permission')
+    if (data === null || data === undefined) {
+      rootAction.rootStart(AUTH_START)
+    } else {
+      // console.log('=======>Cookies中的data = ' + JSON.stringify(data))
+      rootAction.rootSelect(AUTH_SELECT, data)
+    }
   }
 
   componentWillReceiveProps () {
@@ -52,13 +57,16 @@ class AuthApp extends Component {
     )
   }
   render () {
-    const { data, text, loginUrl, isFetching, httpAction } = this.props
+    const { data, text, loginUrl, isFetching, httpAction, cookies } = this.props
     // 计算数据
     let showBody = null
     if (isFetching) {
       showBody = <h2>Loading...</h2>
       httpAction.itembankGET(AUTH_SELECT, 'user/permission')
     } else if (data) {
+      // 保存权限数据
+      cookies.set('permission', data)
+      // 收到数据了,可以解析了
       let liList = data.map((item, i) => {
         var tmpID = item['platformShortName']
         var tmpName = item['platformName']
@@ -67,8 +75,8 @@ class AuthApp extends Component {
           tmpSpan = <span key={tmpID}><Link to={tmpID}>{tmpName}</Link><br /></span>
         }
         return tmpSpan
-      }
-      )
+      })
+      // 拼装要显示的html标签
       showBody = <Router>
         <div>
           <div className="nav">
@@ -81,8 +89,10 @@ class AuthApp extends Component {
         </div>
       </Router>
     } else if (text) {
+      // 出错了
       showBody = <h2>text</h2>
     } else if (loginUrl) {
+      // 请先登录
       console.log('=======>正在打开登录地址 = ' + loginUrl)
       self.location = loginUrl
     }
