@@ -6,6 +6,7 @@ var ReduxThunk = require('redux-thunk').default
 const logger = createLogger()
 
 const enhancer = compose(
+  // 使用工具Redux-Devtools
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 const createStoreWithMiddleware = applyMiddleware(
