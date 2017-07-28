@@ -10,6 +10,10 @@ export class TestApp extends Component {
     data: object,
     isFetching: bool
   }
+  constructor (props) {
+    super(props)
+    document.title = '学校列表'
+  }
   componentDidMount () {
     console.log('=======>testApp 开始加载数据......')
     const { rootAction } = this.props

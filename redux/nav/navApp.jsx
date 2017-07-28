@@ -10,6 +10,10 @@ export class NavApp extends Component {
     data: object,
     isFetching: bool
   }
+  constructor (props) {
+    super(props)
+    document.title = '教辅机构'
+  }
   componentDidMount () {
     console.log('=======>NavApp 开始加载数据......')
     const { rootAction } = this.props
@@ -28,9 +32,11 @@ export class NavApp extends Component {
     let html = null
 
     if (isFetching) {
+      // 显示刷新并请求数据
       httpAction.dictionaryGET(NAV_SELECT, 'textbookunit')
       html = <h2>Loading...</h2>
     } else if (data) {
+      // 显示加载的数据
       totalItems = data['totalItems']
       items = data['items']
       let liList = items.map((item, i) =>
@@ -43,7 +49,6 @@ export class NavApp extends Component {
     } else if (text) {
       html = <div>{text}</div>
     }
-    console.log('=======>总数量totalItems:' + totalItems)
     return (
       <div>
         {html}

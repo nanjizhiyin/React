@@ -4,6 +4,7 @@ import { HOME_SELECT, HOME_START } from '../rootAction.jsx'
 import {
   Link
 } from 'react-router-dom'
+import $ from 'jquery'
 
 export class HomeApp extends Component {
   static propTypes = {
@@ -13,9 +14,10 @@ export class HomeApp extends Component {
     data: object,
     isFetching: bool
   }
-  // constructor (props) {
-  //   super(props)
-  // }
+  constructor (props) {
+    super(props)
+    $('title').html('权限列表')
+  }
 
   componentDidMount () {
     const { rootAction } = this.props

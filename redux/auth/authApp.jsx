@@ -23,9 +23,10 @@ class AuthApp extends Component {
     loginUrl : string,
     isFetching : bool
   }
-  // constructor(props) {
-  //   super(props)
-  // }
+  constructor (props) {
+    super(props)
+    document.title = 'ReactJS'
+  }
   componentDidMount () {
     const { rootAction, cookies } = this.props
     let data = cookies.get('permission')

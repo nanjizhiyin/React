@@ -1,5 +1,6 @@
 const path = require('path')
-module.exports = {
+var nodeModulesDir = path.resolve(__dirname, 'node_modules')
+var config = {
   entry: path.join(__dirname, '/public/index.jsx'), // 唯一的入口文件
   output: {
     path: path.join(__dirname, '/disc'), // 打包后文件存放的目录
@@ -19,19 +20,19 @@ module.exports = {
 }
 // JS,JSX
 // ------------------------------------
-module.exports.module.loaders.push({
+config.module.loaders.push({
   test: /\.js?$/,
-  exclude: /node_modules/,
+  exclude: [nodeModulesDir],
   loader: 'babel-loader'
 })
-module.exports.module.rules.push({
+config.module.rules.push({
   test: /\.jsx?$/,
-  exclude: /node_modules/,
+  exclude: [nodeModulesDir],
   loader: 'babel-loader'
 })
 // SCSS
 // ------------------------------------
-module.exports.module.rules.push({
+config.module.rules.push({
   test: /\.scss$/,
   use: [{
     loader: 'style-loader'
@@ -41,3 +42,5 @@ module.exports.module.rules.push({
     loader: 'sass-loader'
   }]
 })
+
+module.exports = config
