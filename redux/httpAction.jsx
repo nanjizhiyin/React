@@ -32,7 +32,7 @@ export function itembankGET (actionType, url) {
     return fetch('http://api.xuexindev.com/itembank-api/' + url, myInit)
       .then(function (response) {
         let tmpJson = response.json()
-        if (response.status === 401) {
+        if (response.status === 401 || response.status === 500) {
           return tmpJson.then(json => {
             // 去登录
             var loginUrl = json['loginUrl']
